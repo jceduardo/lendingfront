@@ -23,9 +23,10 @@ const LoanApp = () => {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [data, setData] = useState(null)
-  const [loanDecision, setLoanDecision] = useState('')
-  const [loanStatus, setLoanStatus] = useState('')
+  const [data, setData] = useState({
+    loan_decision:'',
+    loan_status:''
+  })
 
   const handleChange = e => {
     setForm({
@@ -38,7 +39,7 @@ const LoanApp = () => {
     setLoading(true)
     e.preventDefault()
     try {
-     let config = {
+      let config = {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -47,19 +48,13 @@ const LoanApp = () => {
         },
         body: JSON.stringify(form)
       }
-      console.log(`${url}`)
-      console.log(config)
-      let res = await fetch(`${url}`, config)
-      console.log(res)
-      let res_json = await res.json()
-      setData(res_json)
-      console.log(data)
+      let response = await fetch(`${url}`, config).then(res => res.json()).then(data => setData(data))
+      setData(response)
       setLoading(false)
     } catch (error) {
       setLoading(false)
       setError(error)
     }
-    return data
   }
 
   if (loading)
@@ -72,6 +67,8 @@ const LoanApp = () => {
     onChange={handleChange}
     onSubmit={handleSubmit}
     form={form}
+    loanDecision={data.loan_decision}
+    loanStatus={data.loan_status}
   />
 }
 

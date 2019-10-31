@@ -4,8 +4,9 @@ import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import BusinessForm from './BusinessForm'
 import OwnerForm from './OwnerForm'
+import LoanResponseForm from './LoanResponseForm'
 
-function ControlledTabs({ onChange, onSubmit, form }) {
+function ControlledTabs({ onChange, onSubmit, form, loanDecision, loanStatus }) {
     const [key, setKey] = useState('business')
 
     return (
@@ -24,7 +25,11 @@ function ControlledTabs({ onChange, onSubmit, form }) {
                     form={form} 
                 />
             </Tab>
-            <Tab eventKey="request_results" title="Request Results" disabled>
+            <Tab eventKey="request_results" title="Request Results">
+                <LoanResponseForm 
+                    loanDecision={loanDecision}
+                    loanStatus={loanStatus}
+                />
             </Tab>
         </Tabs>
     )

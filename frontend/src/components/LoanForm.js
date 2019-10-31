@@ -1,7 +1,7 @@
 import React from 'react'
 import ControlledTabs from '../components/ControlledTabs'
 
-const LoanForm = ({ onChange, onSubmit, form }) => (
+const LoanForm = ({ onChange, onSubmit, form, loanDecision, loanStatus }) => (
     <div className="card">
         <h5 className="card-header h5">Loan Application</h5>
         <div className="card-body">
@@ -10,6 +10,8 @@ const LoanForm = ({ onChange, onSubmit, form }) => (
                     onChange={onChange}
                     onSubmit={onSubmit}
                     form={form}
+                    loanDecision={loanDecision}
+                    loanStatus={loanStatus}
                 />
             </div>
             <div className="row justify-content-center">

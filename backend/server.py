@@ -1,12 +1,10 @@
 import tornado.web
 import tornado.gen
 import tornado.ioloop
-import asyncio, selectors, sys, os
-import config.setting as SETUP
-import adapters.handlers as HANDLER
-import json, traceback, logging
-import abc
-from abc import ABCMeta, abstractmethod
+import asyncio, selectors, sys, os, logging
+
+from config import setting as SETUP
+from adapters import handlers as HANDLER
 
 logging.basicConfig(level = logging.DEBUG)
 LOGGER = logging.getLogger('loanapp')

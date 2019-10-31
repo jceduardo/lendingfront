@@ -2,7 +2,7 @@ import json, unittest, asyncio, selectors, sys, os, traceback, json.decoder
 import tornado.web
 
 from tornado.testing import AsyncHTTPTestCase
-from server import LoanHandler
+from backend.adapters.handlers import LoanHandler_Adapter 
 from json.decoder import JSONDecodeError 
 
 import http
@@ -10,7 +10,7 @@ from http import HTTPStatus
 
 class ServerTest(AsyncHTTPTestCase):
 	def get_app(self):
-		return tornado.web.Application([(r"/loan/(?P<action>[A-Za-z]+)?", LoanHandler)], debug=True)
+		return tornado.web.Application([(r"/loan/(?P<action>[A-Za-z]+)?", LoanHandler_Adapter)], debug=True)
 
 	def post(self, route, data):
 		result = self.fetch(route,method="POST",body=json.dumps(data)).body

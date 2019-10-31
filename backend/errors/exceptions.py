@@ -1,7 +1,8 @@
 import tornado.web
 import tornado.ioloop
 import asyncio, selectors, sys, os
-import resources.messages as MESSAGE
+
+from resources import messages as MESSAGE
 
 import http
 from http import HTTPStatus

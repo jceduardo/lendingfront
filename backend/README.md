@@ -40,6 +40,6 @@ Run Unit Tests
 --------------------------
 
 ```
-$ cd tests
+$ cd unit_tests
 $ nosetests -v test_unit
 ```

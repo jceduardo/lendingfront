@@ -10,7 +10,7 @@ if __name__ == "__main__":
         packages = find_packages(),
         install_requires = open(os.path.join(
             os.path.dirname(__file__),
-            "req.txt"), 'rb')
+            "requirements.txt"), 'rb')
         .readlines(),
-        version = "1.0.0"
+        version = "0.0.1"
     )
